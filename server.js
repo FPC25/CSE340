@@ -35,6 +35,12 @@ app.get('/projects', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/views/projects.html'));
 });
 
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
+
+// Tell Express where to find your templates
+app.set('views', path.join(__dirname, 'src/views'));
+
 app.listen(PORT, () => {
     console.log(`Server is running in http://127.0.0.1:${PORT}`);
     console.log(`Environment: ${NODE_ENV}`);
