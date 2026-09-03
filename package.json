@@ -1,0 +1,27 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/FPC25/CSE340#readme",
+  "bugs": {
+    "url": "https://github.com/FPC25/CSE340/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FPC25/CSE340.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node --env-file=.env server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
