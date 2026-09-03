@@ -17,8 +17,19 @@ const app = express();
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+/**
+  * Routes
+  */
 app.get('/', (req, res) => {
-  res.send('Hello from Express!');
+    res.sendFile(path.join(__dirname, 'src/views/home.html'));
+});
+
+app.get('/organizations', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/views/organizations.html'));
+});
+
+app.get('/projects', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/views/projects.html'));
 });
 
 app.listen(PORT, () => {
