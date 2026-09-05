@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/main.js" defer></script>
 </head>
 <body>
     <nav>
@@ -12,7 +13,16 @@
             <img src="/images/cse340-service-network.png" alt="CSE 340 Service Network">
         </a>
 
-        <ul>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="main-menu">
+            <span class="menu-icon" aria-hidden="true">&#9776;</span>
+            <span class="visually-hidden">Open navigation menu</span>
+        </button>
+
+        <ul id="main-menu">
             <li><a href="/">Home</a></li>
             <li><a href="/organizations">Organizations</a></li>
             <li><a href="/projects">Projects</a></li>
