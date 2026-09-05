@@ -121,6 +121,8 @@ main {
     max-width: 70rem;
     margin: 0 auto;
     padding: 3rem clamp(1rem, 5vw, 4rem);
+    width: 100%;
+    font-size: 1.2rem;
 }
 
 main ul {
@@ -132,11 +134,18 @@ main ul {
     padding: 0;
 }
 
+@media (min-width: 1000px) {
+    main ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 main li {
     background-color: var(--white);
+    border: 0.1px solid rgba(10, 34, 53, 0.25);;
     border-left: 5px solid var(--coral);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgb(18 48 71 / 12%);
+    box-shadow: 0 4px 12px rgba(10, 34, 53, 0.12);
     padding: 1.25rem;
 }
 
@@ -212,6 +221,14 @@ footer {
 
     .brand img {
         height: 4rem;
+    }
+
+    main {
+        font-size: 1rem;
+    }
+
+    main ul {
+        grid-template-columns: 1fr;
     }
 
     h1 {
