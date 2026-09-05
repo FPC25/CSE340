@@ -55,13 +55,6 @@ nav a:focus-visible {
     color: var(--coral);
 }
 
-main {
-    flex: 1;
-    width: min(100%, 70rem);
-    margin: 0 auto;
-    padding: 3rem 0;
-}
-
 h1 {
     color: var(--navy);
     font-size: 2.4rem;
@@ -72,6 +65,13 @@ h2 {
     color: var(--teal);
     font-size: 1.8rem;
     margin-top: 2rem;
+}
+
+main {
+    flex: 1;
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 3rem clamp(1rem, 5vw, 4rem);
 }
 
 main ul {
