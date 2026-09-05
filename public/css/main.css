@@ -55,6 +55,10 @@ nav a {
 }
 
 @media (min-width: 1000px) {
+    nav ul {
+        gap: 2rem;
+    }
+    
     nav a{
         font-size: 1.3rem;
     }
