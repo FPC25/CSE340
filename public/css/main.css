@@ -47,15 +47,18 @@ nav ul {
 }
 
 nav a {
+    border-radius: 4px;
+    display:block;
     color: var(--white);
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     font-weight: bold;
 }
 
 nav a:hover, 
 nav a:focus-visible {
     color: var(--navy);
+    background-color: var(--coral);
 }
 
 .brand {
@@ -68,6 +71,24 @@ nav a:focus-visible {
     height: 3.5rem;
     object-fit: contain;
     width: auto;
+}
+
+.brand:hover {
+    background-color: var(--teal);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 h1 {
@@ -132,14 +153,33 @@ footer {
 
 @media (max-width: 600px) {
     nav {
-        align-items: stretch;
-        flex-direction: column;
-        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     nav ul {
-        align-items: center;
+        display: none;
+        flex-basis: 100%;
         flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 1rem;
+    }
+
+    nav ul.is-open {
+        display: flex;
+    }
+
+    nav li {
+        text-align: center;
+    }
+
+    nav a {
+        color: --var(--white);
+        display: block;
+        padding: 0.75rem;
     }
 
     .brand {
