@@ -155,6 +155,7 @@ main li img {
     margin-bottom: 1rem;
     object-fit: contain;
     width: 7rem;
+    max-width: 100%;
 }
 
 .main-logo {
@@ -162,6 +163,15 @@ main li img {
     height: auto;
     margin: 2rem auto 0;
     max-width: 100%;
+}
+
+.organization-list li {
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.organization-list li img {
+    margin: 0 auto 1rem;
 }
 
 footer {
