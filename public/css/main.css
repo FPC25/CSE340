@@ -160,13 +160,25 @@ footer {
     width: 100%;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 600px) {
     nav {
         flex-wrap: wrap;
     }
 
     .menu-toggle {
+        align-items: center;
+        background-color: transparent;
+        border: 2px solid var(--navy);
+        border-radius: 6px;
+        color: var(--navy);
+        cursor: pointer;
         display: block;
+        font-size: 1.5rem;
+        justify-content: center;
+        line-height: 1;
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.5rem 0.75rem;
     }
 
     nav ul {
@@ -186,7 +198,6 @@ footer {
     }
 
     nav a {
-        color: --var(--white);
         display: block;
         padding: 0.75rem;
     }
@@ -196,7 +207,7 @@ footer {
     }
 
     .brand img {
-        height: 3rem;
+        height: 4rem;
     }
 
     h1 {
