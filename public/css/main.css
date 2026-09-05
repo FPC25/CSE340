@@ -1,3 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+:root {
+    --navy: #123047;
+    --teal: #087f8c;
+    --coral: #d96c4f;
+    --cream: #f7f4ef;
+    --text: #263238;
+    --white: #ffffff;
+}
+
 html, body {
     background-color: lightblue;
     font-family: Arial, sans-serif;
@@ -6,25 +26,105 @@ html, body {
 }
 
 body {
-    nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    background-color: var(--cream);
+    color: var(--text);
+}
 
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
+nav {
+    background-color: var(--navy);
+    color: var(--white);
+}
 
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-            &:hover {
-                color: #0066cc;
-            }
-        }
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+}
+
+nav a:hover, 
+nav a:focus-visible {
+    color: var(--coral);
+}
+
+main {
+    width: min(90%, 70rem);
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+h1 {
+    color: var(--navy);
+    font-size: 2.4rem;
+    margin-top: 0;
+}
+
+h2 {
+    color: var(--teal);
+    font-size: 1.8rem;
+    margin-top: 2rem;
+}
+
+main ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 2rem 0;
+    padding: 0;
+}
+
+main li {
+    background-color: var(--white);
+    border-left: 5px solid var(--coral);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgb(18 48 71 / 12%);
+    padding: 1.25rem;
+}
+
+main li img {
+    display: block;
+    height: 4rem;
+    margin-bottom: 1rem;
+    object-fit: contain;
+    width: 7rem;
+}
+
+.main-logo {
+    display: block;
+    height: auto;
+    margin: 2rem auto 0;
+    max-width: 100%;
+}
+
+footer {
+    background-color: var(--navy);
+    color: var(--white);
+    margin-top: 3rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        align-items: center;
+        flex-direction: column;
     }
-}     
+
+    main {
+        padding: 2rem 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
