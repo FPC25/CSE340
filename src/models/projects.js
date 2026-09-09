@@ -7,7 +7,7 @@ const getAllProjects = async() => {
             p.title, 
             p.description, 
             p.location, 
-            TO_CHAR(p.date, 'YYYY-MM-DD') AS date, 
+            TO_CHAR(p.date, 'DD/MM/YYYY') AS date, 
             o.orgname
         FROM project p
         JOIN organization o ON o.organization_id = p.organization_id
