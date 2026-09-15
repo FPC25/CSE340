@@ -1,23 +1,11 @@
 import { Pool } from 'pg'; 
 
-const isProduction = process.env.NODE_ENV === 'production';
-
-/**
- * Connection pool for PostgreSQL database.
- * 
- * A connection pool maintains a set of reusable database connections
- * to avoid the overhead of creating new connections for each request.
- * This improves performance and reduces load on the database server.
- * 
- * Uses a connection string from environment variables for simplified setup.
- * The connection string format is:
- * postgresql://username:password@host:port/database
- */
 const pool = new Pool({
     connectionString: process.env.DB_URL,
-    ssl: isProduction ? { rejectUnauthorized: false } : false
+    ssl: process.env.DB_URL?.includes('render.com')
+        ? { rejectUnauthorized: false }
+        : false
 });
-
 /**
  * Common SSL Issue:
  *
