@@ -45,4 +45,55 @@ const getProjectsByOrganizationId = async (organizationId) => {
       return result.rows;
 };
 
-export { getAllProjects, getProjectsByOrganizationId }; 
+const getUpcomingProjects = async (number_of_projects) => {
+    try {
+        const query = `
+            SELECT
+                p.project_id,
+                p.organization_id, 
+                p.title, 
+                p.description, 
+                p.location, 
+                TO_CHAR(p.date, 'DD/MM/YYYY') AS date, 
+                o.orgname
+            FROM project p
+            JOIN organization o ON o.organization_id = p.organization_id
+            WHERE p.date >= CURRENT_DATE
+            ORDER BY p.date ASC
+            LIMIT $1;
+        `;
+
+        const result = await db.query(query, [number_of_projects]);
+
+        return result.rows;
+    }
+    catch (error) {
+        console.error('Error fetching upcoming projects:', error);
+        throw error;
+    }
+};
+
+const getProjectDetails = async (projectId) => {
+    const query = `
+      SELECT
+        p.project_id,
+        p.organization_id,
+        p.title,    
+        p.description,
+        p.location,
+        TO_CHAR(p.date, 'DD/MM/YYYY') AS date,
+        o.orgname
+      FROM project p
+      JOIN organization o ON o.organization_id = p.organization_id  
+      WHERE p.project_id = $1
+    `;
+
+    const queryParams = [projectId];
+    const result = await db.query(query, queryParams);
+
+    console.log('Project Details:', result.rows[0]); // Log the project details for debugging
+
+    return result.rows[0] // Return the first (and only) row
+};
+
+export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails }; 
