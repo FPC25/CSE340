@@ -16,8 +16,6 @@ const showProjectDetailsPage = async (req, res) => {
 
     const title = projectDetails.title; // Assuming getProjectDetails returns the title as the second element
 
-    console.log('Project Details:', projectDetails); // Log the project details for debugging
-
     res.render('project', { title, projectDetails });
 }
 

@@ -91,8 +91,6 @@ const getProjectDetails = async (projectId) => {
     const queryParams = [projectId];
     const result = await db.query(query, queryParams);
 
-    console.log('Project Details:', result.rows[0]); // Log the project details for debugging
-
     return result.rows[0] // Return the first (and only) row
 };
 
