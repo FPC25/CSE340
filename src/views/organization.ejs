@@ -2,9 +2,10 @@
 <main>
     <h1><%= title %></h1>
 
-    <h2><%= organizationDetails.orgname %></h2>
-
-    <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.orgname %> logo">
+    <div class="organization-heading">
+        <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.orgname %> logo">
+        <h2><%= organizationDetails.orgname %></h2>
+    </div>
 
     <p>Description: <%= organizationDetails.description %></p>
     <p>Contact Email: <%= organizationDetails.contact_email %></p>

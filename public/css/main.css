@@ -194,6 +194,26 @@ main ul:not(.category-list) li:hover {
     margin-bottom: 1rem;
 }
 
+.organization-heading {
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.organization-heading img {
+    height: 80px;
+    margin: 0;
+    object-fit: contain;
+    width: 120px;
+}
+
+.organization-heading h2 {
+    margin: 0;
+    border-bottom: None;
+    padding: 0
+}
+
 .organization-list li a {
     font-size: 1.25rem;
     font-weight: 600;
