@@ -6,7 +6,7 @@
     <ul class="project-list">
         <% projects.forEach((project) => { %>
             <li>
-                <h3><%= project.date %>: <%= project.title %> (<%= project.orgname %>)</h3>
+                <h3><%= project.date %>: <a href="/project/<%= project.project_id %>"><%= project.title %></a> (<%= project.orgname %>)</h3>
                 <p><strong>Location:</strong> <%= project.location %></p>
                 <p><%= project.description %></p>
             </li>
