@@ -1,248 +1,286 @@
+/* ==========================================================================
+   1. TIPOGRAFIA E RESET BÁSICO
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
-    --navy: #123047;
-    --teal: #70aeaf;
-    --coral: #d96c4f;
-    --cream: #ebe7df;
-    --text: #263238;
+    --navy: #0B192C;
     --white: #ffffff;
-}
-
-html {
-    min-height: 100%;
+    --bg: #F8F9FA;
+    --heading: #0B192C;
+    --muted: #555555;
+    --border: #EAEAEA;
+    --accent: #20643e;
+    --accent-soft: #E9F5EF;
+    --footer-text: #cddff7;
 }
 
 body {
-    background-color: var(--cream);
-    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg); /* Fundo off-white */
+    color: #333333;
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    min-height: 100vh; /* Permite empurrar o footer para baixo */
 }
 
-nav {
-    align-items: center;
-    background-color: var(--teal);
-    color: var(--navy);
-    display: flex;
-    justify-content: space-between;
+/* ==========================================================================
+   2. ESTRUTURA PRINCIPAL (MAIN)
+   ========================================================================== */
+main {
+    flex: 1; /* Preenche o espaço vazio da tela */
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
-    padding: 0.75rem clamp(1rem, 5vw, 4rem);
-}
-
-nav ul {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.75rem;
-    list-style: none;
-    margin: 0 0 0 auto;
-    max-width: 70rem;
-    padding: 0;
-}
-
-nav a {
-    border-radius: 4px;
-    display:block;
-    color: var(--navy);
-    text-decoration: none;
-    padding: 0.5rem 0.75rem;
-    font-weight: bold;
-}
-
-nav a:hover, 
-nav a:focus-visible {
-    color: var(--navy);
-    background-color: var(--coral);
-}
-
-.brand {
-    display: inline-flex;
-    flex-shrink: 0;
-}
-
-.brand img {
-    display: block;
-    height: 3.75rem;
-    object-fit: contain;
-    width: auto;
-}
-
-.brand:hover {
-    background-color: var(--teal);
-}
-
-.menu-toggle {
-    display: none;
-}
-
-.visually-hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-}
-
-@media (min-width: 1000px) {
-    nav ul {
-        gap: 2rem;
-    }
-    
-    nav a{
-        font-size: 1.3rem;
-    }
-
-    .brand img {
-        height: 5rem;
-    }
 }
 
 h1 {
-    color: var(--navy);
-    font-size: 2.4rem;
-    margin-top: 0;
+    color: var(--heading);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
 }
 
 h2 {
-    color: var(--coral);
-    font-size: 1.8rem;
+    color: var(--heading);
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
     margin-top: 2rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
 }
 
-main {
-    flex: 1;
-    max-width: 70rem;
-    margin: 0 auto;
-    padding: 3rem clamp(1rem, 5vw, 4rem);
-    width: 100%;
+h3 {
+    color: var(--heading);
     font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
-main ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    list-style: none;
-    margin: 2rem 0;
-    padding: 0;
-}
-
-@media (min-width: 1000px) {
-    main ul {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-main li {
-    background-color: var(--white);
-    border: 0.1px solid rgba(10, 34, 53, 0.25);;
-    border-left: 5px solid var(--coral);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(10, 34, 53, 0.12);
-    padding: 1.25rem;
-}
-
-main li img {
-    display: block;
-    height: 4rem;
+p {
     margin-bottom: 1rem;
-    object-fit: contain;
-    width: 7rem;
-    max-width: 100%;
+    font-size: 1.1rem;
+    color: var(--muted);
 }
 
-.main-logo {
-    display: block;
-    height: auto;
-    margin: 2rem auto 0;
-    max-width: 100%;
+p strong {
+    color: var(--heading);
 }
 
+a {
+    color: var(--accent);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #1a5e3a;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   3. CABEÇALHO (HEADER) E NAVEGAÇÃO
+   ========================================================================== */
+nav {
+    background-color: var(--navy);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.brand img {
+    height: 45px;
+    width: auto;
+    transition: transform 0.2s;
+}
+
+.brand:hover img {
+    transform: scale(1.05);
+}
+
+#main-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+#main-menu a {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+#main-menu a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* Estilização do Botão Mobile */
+.menu-toggle {
+    display: none; /* Escondido no Desktop */
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.visually-hidden {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
+
+/* ==========================================================================
+   4. SISTEMA DE CARDS (PROJETOS, ORGANIZAÇÕES, ETC)
+   ========================================================================== */
+/* Transforma as listas (exceto as categorias) em um Grid Responsivo */
+main ul:not(.category-list) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Design base de cada Cartão */
+main ul:not(.category-list) li {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-left: 5px solid var(--accent);
+}
+
+main ul:not(.category-list) li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Ajustes Específicos para Cartões de Organizações */
 .organization-list li {
-    overflow-wrap: anywhere;
     text-align: center;
+    align-items: center;
 }
 
 .organization-list li img {
-    margin: 0 auto 1rem;
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
 }
 
-footer {
-    background-color: var(--teal);
+.organization-list li a {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--heading);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* ==========================================================================
+   5. LISTA DE CATEGORIAS (ESTILO "TAGS")
+   ========================================================================== */
+/* Em vez de cards gigantes, categorias viram etiquetas organizadas */
+ul.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+ul.category-list li a {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 20px; /* Bordas super arredondadas */
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+ul.category-list li a:hover {
+    background-color: var(--accent);
     color: var(--white);
-    margin-top: 0;
-    padding: 1.5rem;
-    text-align: center;
-    width: 100%;
+    text-decoration: none;
 }
 
-@media (max-width: 600px) {
-    nav {
-        flex-wrap: wrap;
-    }
+/* ==========================================================================
+   6. IMAGENS E CONTEÚDO GERAL
+   ========================================================================== */
+.main-logo {
+    display: block;
+    max-width: 100%;
+    width: 400px; /* Tamanho controlado */
+    height: auto;
+    margin: 3rem auto;
+}
 
-    .menu-toggle {
-        align-items: center;
-        background-color: transparent;
-        border: 2px solid var(--navy);
-        border-radius: 6px;
-        color: var(--navy);
-        cursor: pointer;
-        display: block;
-        font-size: 1.5rem;
-        justify-content: center;
-        line-height: 1;
-        min-height: 44px;
-        min-width: 44px;
-        padding: 0.5rem 0.75rem;
-    }
+main > img:not(.main-logo) {
+    display: block;
+    max-height: 150px;
+    margin: 1.5rem 0;
+}
 
-    nav ul {
-        display: none;
-        flex-basis: 100%;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding-top: 1rem;
-    }
+/* ==========================================================================
+   7. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+    background-color: var(--navy);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-top: 4px solid var(--accent);
+    font-size: 0.9rem;
+}
 
-    nav ul.is-open {
-        display: flex;
-    }
+footer p {
+    color: var(--footer-text);     
+}
 
-    nav li {
-        text-align: center;
-    }
-
-    nav a {
-        display: block;
-        padding: 0.75rem;
-    }
-
-    .brand {
-        justify-content: center;
-    }
-
-    .brand img {
-        height: 4rem;
-    }
-
+/* ==========================================================================
+   8. RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
     main {
-        font-size: 1rem;
+        padding: 2rem 1rem;
+    }
+    
+    .menu-toggle {
+        display: block; /* Mostra o ícone de hambúrguer */
     }
 
-    main ul {
-        grid-template-columns: 1fr;
+    #main-menu {
+        display: none; /* Escondido por padrão no mobile */
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+        gap: 1rem;
     }
 
-    h1 {
-        font-size: 2rem;
+  
+
+    /* Se o Javascript mudar o aria-expanded para true, o menu aparece! */
+    .menu-toggle[aria-expanded="true"] + #main-menu {
+        display: flex;
     }
 }
