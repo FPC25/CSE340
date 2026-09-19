@@ -26,7 +26,7 @@ const showCategoryDetailsPage = async (req, res) => {
 
     const title = categoryDetails.category_name;
 
-    res.render('category-details', { 
+    res.render('category', { 
         title, 
         categoryDetails, 
         projectsInCategory 
