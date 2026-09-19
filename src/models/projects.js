@@ -94,4 +94,31 @@ const getProjectDetails = async (projectId) => {
     return result.rows[0] // Return the first (and only) row
 };
 
-export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails }; 
+const getProjectsByCategoryId = async (categoryId) => {
+    try {
+        const query = `
+            SELECT
+                p.project_id,
+                p.organization_id,
+                p.title,
+                p.description,
+                p.location,
+                TO_CHAR(p.date, 'DD/MM/YYYY') AS date
+            FROM project p
+            JOIN project_category pc ON p.project_id = pc.project_id
+            JOIN category c ON pc.category_id = c.category_id
+            WHERE pc.category_id = $1
+            ORDER BY p.date;
+        `;
+
+        const result = await db.query(query, [categoryId]);
+
+        return result.rows;
+    }
+    catch (error) {
+        console.error('Error fetching projects by category ID:', error);
+        throw error;
+    }
+};
+
+export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails, getProjectsByCategoryId }; 
