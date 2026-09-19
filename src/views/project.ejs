@@ -12,6 +12,6 @@
     <p><strong>Start Date:</strong> <%= projectDetails.date %></p>
     <p><strong>Location:</strong> <%= projectDetails.location %></p>
 
-    <p><strong>Organization:</strong> <a href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.orgname %></a></p>
+    <p><strong>Organization:</strong> <a class="org-link" href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.orgname %></a></p>
 </main>
 <%- include('partials/footer') %> 

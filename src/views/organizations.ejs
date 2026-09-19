@@ -5,7 +5,7 @@
     <p>Here are a few of our partner organizations:</p>
     <ul class="organization-list">
         <% organizations.forEach((organization) => { %>
-            <li><img src="/images/<%= organization.logo_filename %>" alt="<%= organization.orgname %> logo"><a href="/organization/<%= organization.organization_id %>"><%= organization.orgname %></a> <%= organization.contact_email %></li>
+            <li><img src="/images/<%= organization.logo_filename %>" alt="<%= organization.orgname %> logo"><a class="org-link" href="/organization/<%= organization.organization_id %>"><%= organization.orgname %></a> <%= organization.contact_email %></li>
         <% }); %>
     </ul>
 </main>
