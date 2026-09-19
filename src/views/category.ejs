@@ -3,7 +3,7 @@
     <h1><%= title %></h1>
 
     <h2>Related Projects:</h2>
-    <ul>
+    <ul class="category-list">
         <% projectsInCategory.forEach((project) => { %>
             <li>
                 <a href="/project/<%= project.project_id %>"><%= project.title %></a>
