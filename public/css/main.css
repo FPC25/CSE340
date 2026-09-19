@@ -82,6 +82,13 @@ a {
     transition: color 0.2s ease-in-out;
 }
 
+.org-link {
+    color: var(--navy);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
 a:hover {
     color: #1a5e3a;
     text-decoration: underline;
