@@ -13,5 +13,7 @@
     <p><strong>Location:</strong> <%= projectDetails.location %></p>
 
     <p><strong>Organization:</strong> <a class="org-link" href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.orgname %></a></p>
+
+    <p><a href="/edit-project/<%= projectDetails.project_id %>">Edit Project</a></p>
 </main>
 <%- include('partials/footer') %> 

@@ -121,4 +121,27 @@ const getProjectsByCategoryId = async (categoryId) => {
     }
 };
 
-export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails, getProjectsByCategoryId }; 
+const updateProject = async (projectId, organization_id, title, description, location, date) => {
+    const query = `
+        UPDATE project
+        SET organization_id = $1, title = $2, description = $3, location $4, date = $5
+        WHERE project_id = $6
+        RETURNING project_id;
+    `
+    
+    const queryParams = [organization_id, title, description, location, date];
+    const result = await db.query(query, queryParams)
+
+    if (result.rows.length === 0) {
+        throw new Error('Project not found');
+    }
+
+    if (process.env.ENABLE_SQL_LOGGING === 'true') {
+        console.log('Updated project with ID', projectId);
+    }
+
+    return result.rows[0].project_id;
+}
+
+
+export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails, getProjectsByCategoryId, updateProject }; 

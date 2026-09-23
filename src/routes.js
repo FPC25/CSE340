@@ -11,7 +11,7 @@ import { showOrganizationsPage,
         organizationValidation
 } from './controllers/organizations.js';
 
-import { showProjectsPage, showProjectDetailsPage } from './controllers/projects.js';
+import { showProjectsPage, showProjectDetailsPage, showEditProjectForm, processEditProjectForm } from './controllers/projects.js';
 
 import { showCategoriesPage, showCategoryDetailsPage } from './controllers/categories.js';
 
@@ -44,6 +44,12 @@ router.get('/edit-organization/:id', showEditOrganizationForm);
 
 // Route to handle the edit organization form submission
 router.post('/edit-organization/:id', processEditOrganizationForm);
+
+// Route to display the edit organization form
+router.get('/edit-project/:id', showEditProjectForm);
+
+// Route to handle the edit organization form submission
+router.post('/edit-project/:id', processEditProjectForm);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
