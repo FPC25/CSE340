@@ -15,9 +15,9 @@ values
 CREATE TABLE project (
 	"project_id" serial primary key,
 	"organization_id" int not null,
-	"title" varchar(150) not null,
+	"title" varchar(200) not null,
 	"description" text not null,
-	"location" varchar(255) not null,
+	"location" varchar(200) not null,
 	"date" date not null,
 	CONSTRAINT fk_organization 
 		FOREIGN KEY (organization_id) 
