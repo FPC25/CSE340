@@ -7,11 +7,11 @@ const getAllProjects = async() => {
             p.title, 
             p.description, 
             p.location, 
-            TO_CHAR(p.date, 'DD/MM/YYYY') AS date, 
+            p.date, 
             o.orgname
         FROM project p
         JOIN organization o ON o.organization_id = p.organization_id
-        Order by date ASC; 
+        Order by p.date ASC; 
     `;
 
     const result = await db.query(query);
@@ -30,7 +30,7 @@ const getProjectsByOrganizationId = async (organizationId) => {
           date
         FROM project
         WHERE organization_id = $1
-        ORDER BY date;
+        ORDER BY p.date;
       `;
       
       const queryParams = [organizationId];
@@ -47,7 +47,7 @@ const getUpcomingProjects = async (number_of_projects) => {
             p.title, 
             p.description, 
             p.location, 
-            TO_CHAR(p.date, 'DD/MM/YYYY') AS date, 
+            p.date, 
             o.orgname
         FROM project p
         JOIN organization o ON o.organization_id = p.organization_id
@@ -69,7 +69,7 @@ const getProjectDetails = async (projectId) => {
         p.title,    
         p.description,
         p.location,
-        TO_CHAR(p.date, 'DD/MM/YYYY') AS date,
+        p.date,
         o.orgname
       FROM project p
       JOIN organization o ON o.organization_id = p.organization_id  
@@ -91,7 +91,7 @@ const getProjectsByCategoryId = async (categoryId) => {
                 p.title,
                 p.description,
                 p.location,
-                TO_CHAR(p.date, 'DD/MM/YYYY') AS date
+                p.date
             FROM project p
             JOIN project_category pc ON p.project_id = pc.project_id
             JOIN category c ON pc.category_id = c.category_id
