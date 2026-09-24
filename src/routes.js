@@ -20,15 +20,26 @@ import { showProjectsPage,
         projectValidation
 } from './controllers/projects.js';
 
-import { showCategoriesPage, showCategoryDetailsPage } from './controllers/categories.js';
+import { 
+        showCategoriesPage, 
+        showCategoryDetailsPage 
+} from './controllers/categories.js';
 
 import { testErrorPage } from './controllers/errors.js';
 
 const router = express.Router();
 
+// Route for Home page
 router.get('/', showHomePage);
+
+
+// Route for organizations page
 router.get('/organizations', showOrganizationsPage);
+
+// Route for projects page
 router.get('/projects', showProjectsPage);
+
+// Route for categories page
 router.get('/categories', showCategoriesPage);
 
 // Route for organization details page
