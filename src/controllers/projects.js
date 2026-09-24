@@ -9,6 +9,8 @@ import { getCategoriesByProjectsId } from '../models/categories.js';
 
 import { getAllOrganizations } from '../models/organizations.js';
 
+import { body, validationResult } from 'express-validator';
+
 // Define any controller functions
 const showProjectsPage = async (req, res) => {
     const NUMBER_OF_UPCOMING_PROJECTS = 5; // Define the number of upcoming projects to display
