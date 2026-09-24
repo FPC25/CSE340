@@ -2,7 +2,7 @@
 <main>
     <h1><%= title %></h1>
 
-    <form action="/update-project/<%= projectDetails.project_id %>" method="POST">
+    <form action="/edit-project/<%= projectDetails.project_id %>" method="POST">
         <div class="form-group">
             <label for="organization">Organization</label>
             <select id="organization" name="organization_id" required>
@@ -58,10 +58,10 @@
         <div class="form-group">
             <label for="date">Date</label>
             <input
-                type="text"
+                type="date"
                 id="date"
                 name="date"
-                value="<%= projectDetails.date %>"
+                value="<%= formatDateInput(projectDetails.date) %>"
                 required
             >
         </div>

@@ -9,7 +9,7 @@
         <% }); %>
     </ul>
     <p><strong>Description:</strong> <%= projectDetails.description %></p>
-    <p><strong>Start Date:</strong> <%= projectDetails.date %></p>
+    <p><strong>Start Date:</strong> <%= formatDate(projectDetails.date) %></p>
     <p><strong>Location:</strong> <%= projectDetails.location %></p>
 
     <p><strong>Organization:</strong> <a class="org-link" href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.orgname %></a></p>
