@@ -34,6 +34,38 @@ app.use(session({
 
 // Use flash message middleware
 app.use(flash);
+
+// Helper to format date to more frindly format
+const formatDate = (dateValue) => {
+    if (!dateValue) return '';
+
+    const date = dateValue instanceof Date
+        ? dateValue
+        : new Date(`${dateValue}T00:00:00Z`);
+
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const year = date.getUTCFullYear();
+
+    return `${day}/${month}/${year}`;
+};
+
+const formatDateInput = (dateValue) => {
+    if (!dateValue) return '';
+
+    const date = dateValue instanceof Date
+        ? dateValue
+        : new Date(`${dateValue}T00:00:00Z`);
+
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const year = date.getUTCFullYear();
+
+    return `${year}-${month}-${day}`;
+};
+
+app.locals.formatDate = formatDate;
+app.locals.formatDateInput = formatDateInput;
  
 // Allow Express to receive and process common POST data
 app.use(express.urlencoded({ extended: true }));
