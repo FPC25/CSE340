@@ -14,6 +14,9 @@
 
     <p><strong>Organization:</strong> <a class="org-link" href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.orgname %></a></p>
 
-    <p><a href="/edit-project/<%= projectDetails.project_id %>">Edit Project</a></p>
+    <p>
+        <a href="/edit-project/<%= projectDetails.project_id %>">Edit Project</a> |
+        <a href="/assign-categories/<%= projectDetails.project_id %>">Assign Categories</a>
+    </p>
 </main>
 <%- include('partials/footer') %> 
