@@ -22,7 +22,9 @@ import { showProjectsPage,
 
 import { 
         showCategoriesPage, 
-        showCategoryDetailsPage 
+        showCategoryDetailsPage,
+        showAssignCategoriesForm,
+        processAssignCategoriesForm
 } from './controllers/categories.js';
 
 import { testErrorPage } from './controllers/errors.js';
@@ -31,7 +33,6 @@ const router = express.Router();
 
 // Route for Home page
 router.get('/', showHomePage);
-
 
 // Route for organizations page
 router.get('/organizations', showOrganizationsPage);
@@ -74,6 +75,12 @@ router.get('/edit-project/:id', showEditProjectForm);
 
 // Route to handle the edit organization form submission
 router.post('/edit-project/:id', processEditProjectForm);
+
+// Routes to display the assign categories to project form
+router.get('/assign-categories/:id', showAssignCategoriesForm);
+
+// Route to handle the assign categories to project form
+router.post('/assign-categories/:id', processAssignCategoriesForm);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
