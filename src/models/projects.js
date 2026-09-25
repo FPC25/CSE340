@@ -30,7 +30,7 @@ const getProjectsByOrganizationId = async (organizationId) => {
           date
         FROM project
         WHERE organization_id = $1
-        ORDER BY p.date;
+        ORDER BY date;
       `;
       
       const queryParams = [organizationId];
