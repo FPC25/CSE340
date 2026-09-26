@@ -24,7 +24,10 @@ import {
         showCategoriesPage, 
         showCategoryDetailsPage,
         showAssignCategoriesForm,
-        processAssignCategoriesForm
+        processAssignCategoriesForm,
+        showCreateCategoryForm,
+        processCreateCategoryForm,
+        categoryValidation
 } from './controllers/categories.js';
 
 import { testErrorPage } from './controllers/errors.js';
@@ -81,6 +84,12 @@ router.get('/assign-categories/:id', showAssignCategoriesForm);
 
 // Route to handle the assign categories to project form
 router.post('/assign-categories/:id', processAssignCategoriesForm);
+
+// Route for new category page
+router.get('/new-category', showCreateCategoryForm);
+
+// Route to handle new category form submission
+router.post('/new-category', categoryValidation, processCreateCategoryForm);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
