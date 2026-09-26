@@ -4,7 +4,8 @@ import {
     getCategoryDetails,
     getCategoriesByProjectsId,
     updateCategoryAssignments,
-    createCategory 
+    createCategory,
+    updateCategory
 } 
 from '../models/categories.js';
 
@@ -58,7 +59,7 @@ const showAssignCategoriesForm = async (req, res) => {
     const categories = await getAllCategories();
     const categoryByProjectId = await getCategoriesByProjectsId(projectId);
 
-    const title = "Assign Categories to Project";
+    const title = "Assign Categories to the Project";
 
     res.render('assign-categories', { 
         title,
@@ -108,6 +109,43 @@ const processCreateCategoryForm = async (req, res) => {
     res.redirect(`/category/${categoryId}`);
 }
 
+const showUpdateCategoryForm = async (req, res) => {
+    const categoryId = req.params.id;    
+    const categoryDetails = await getCategoryDetails(categoryId);
+
+    if (!categoryDetails) {
+        const error = new Error('Category not found');
+        error.status = 404;
+        throw error;
+    }
+
+    const title = 'Edit Category';
+    res.render('edit-category', { title, categoryDetails });
+}
+
+const processUpdateCategoryForm = async (req, res) => {
+    const categoryId = req.params.id;
+    // Check for validation errors
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        // Validation failed - loop through errors
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+
+        // Redirect back to the new organization form
+        return res.redirect(`/edit-category/${categoryId}`);
+    }
+
+    const { category_name } = req.body;
+
+    await updateCategory(categoryId, category_name);
+
+    req.flash('success', 'Category updated successfully!');
+
+    res.redirect(`/category/${categoryId}`);
+}
+
 // Export any controller functions
 export { 
     showCategoriesPage, 
@@ -116,5 +154,7 @@ export {
     processAssignCategoriesForm,
     showCreateCategoryForm,
     processCreateCategoryForm,
+    showUpdateCategoryForm,
+    processUpdateCategoryForm,
     categoryValidation
 };
