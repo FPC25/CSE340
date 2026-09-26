@@ -31,6 +31,37 @@ body {
     min-height: 100vh; /* Permite empurrar o footer para baixo */
 }
 
+.flash-messages {
+    width: calc(100% - 2rem);
+    max-width: 1200px;
+    margin: 1rem auto 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.alert {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    padding: 0.85rem 1rem;
+    margin: 0;
+    border: 1px solid transparent;
+    border-left-width: 4px;
+    border-radius: 4px;
+}
+
+.alert p {
+    margin: 0;
+    color: inherit;
+    font-size: 1rem;
+}
+
+.alert__type {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
 /* ==========================================================================
    2. Mensagens Flash (MAIN)
    ========================================================================== */

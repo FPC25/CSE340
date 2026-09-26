@@ -32,12 +32,19 @@
     </nav>
     
     <% const messages = flash(); %>
-    <% Object.keys(messages).forEach(type => { %>
-        <% if (messages[type].length > 0) { %>
-            
-                <% messages[type].forEach(msg => { %>
-                    <%= msg %>
-                <% }); %>
-            
-        <% } %>
-    <% }); %>
+    <div class="flash-messages" aria-label="Notifications">
+        <% Object.entries(messages).forEach(([type, typeMessages]) => { %>
+            <% typeMessages.forEach((message) => { %>
+                <div
+                    class="alert <%= type %>"
+                    role="<%= type === 'error' || type === 'warning' ? 'alert' : 'status' %>"
+                    aria-atomic="true"
+                >
+                    <strong class="alert__type">
+                        <%= type.charAt(0).toUpperCase() + type.slice(1) %>
+                    </strong>
+                    <p><%= message %></p>
+                </div>
+            <% }); %>
+        <% }); %>
+    </div>
