@@ -3,8 +3,9 @@
     <h1><%= title %></h1>
 
     <form action="/new-category" method="POST">
+        <%- include('partials/required-fields-note') %>
         <div class="form-group">
-            <label for="categoryName">Category Name</label>
+            <label for="categoryName">Category Name <span class="required-indicator" aria-hidden="true">*</span></label>
             <input
                 type="text"
                 id="categoryName"

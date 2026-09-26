@@ -301,7 +301,129 @@ main > img:not(.main-logo) {
 }
 
 /* ==========================================================================
-   7. RODAPÉ (FOOTER)
+   7. FORMULÁRIOS (FORMS & FORM-GROUP)
+   ========================================================================== */
+form {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--accent); /* Segue o padrão da borda esquerda dos cards */
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Estilo para cada linha de checkbox + label dentro do form-group */
+.form-group > div {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.form-group > div:hover {
+    background-color: var(--bg); /* Destaque sutil ao passar o mouse na linha */
+}
+
+.form-group input[type="checkbox"] {
+    appearance: none;
+    background-color: var(--white);
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.25em;
+    height: 1.25em;
+    border: 2px solid var(--muted);
+    border-radius: 0.25em;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.form-group input:not([type="checkbox"]),
+.form-group select,
+.form-group textarea {
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    padding: 0.65rem 0.75rem;
+}
+
+.form-group input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--white);
+    background-color: var(--white);
+    transform-origin: center;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.form-group input[type="checkbox"]:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.form-group input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.form-group label {
+    font-size: 1.2rem;
+    color: var(--heading);
+    cursor: pointer; /* Facilita clicar no texto para marcar o checkbox */
+    font-weight: 500;
+}
+
+.required-note {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.required-indicator {
+    color: #a32121;
+    font-weight: 700;
+}
+
+/* Estilização do Botão de Submit */
+form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    background-color: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #1a5e3a; /* Tom mais escuro do var(--accent) para o hover */
+}
+
+form button[type="submit"]:active {
+    transform: scale(0.98); /* Leve "afundada" ao clicar */
+}
+
+/* ==========================================================================
+   8. RODAPÉ (FOOTER)
    ========================================================================== */
 footer {
     background-color: var(--navy);
@@ -316,7 +438,7 @@ footer p {
 }
 
 /* ==========================================================================
-   8. RESPONSIVIDADE (MOBILE)
+   9. RESPONSIVIDADE (MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
     main {
@@ -334,11 +456,13 @@ footer p {
         margin-top: 1rem;
         gap: 1rem;
     }
-
-  
-
+    
     /* Se o Javascript mudar o aria-expanded para true, o menu aparece! */
     .menu-toggle[aria-expanded="true"] + #main-menu {
         display: flex;
+    }
+    
+    form {
+        padding: 1.5rem;
     }
 }
