@@ -2,8 +2,9 @@
 import { 
     getAllCategories, 
     getCategoryDetails,
-    updateCategoryAssignments, 
-    getCategoriesByProjectsId
+    getCategoriesByProjectsId,
+    updateCategoryAssignments,
+    createCategory 
 } 
 from '../models/categories.js';
 
@@ -11,6 +12,18 @@ import {
     getProjectDetails, 
     getProjectsByCategoryId 
 } from '../models/projects.js';
+
+import { body, validationResult } from 'express-validator';
+
+// Define validation and sanitization rules for categories form
+const categoryValidation = [
+    body('category_name')
+        .trim()
+        .notEmpty()
+        .withMessage('Category name is required')
+        .isLength({ min: 3, max: 100})
+        .withMessage('Category name must be between 3 and 100 characters'),   
+]
 
 // Define any controller functions
 const showCategoriesPage = async (req, res) => {
@@ -68,10 +81,40 @@ const processAssignCategoriesForm = async (req, res) => {
     res.redirect(`/project/${projectId}`);
 }
 
+const showCreateCategoryForm = async (req, res) => {
+    const title = 'Create a New Category';
+
+    res.render('new-category', { title });
+}
+
+const processCreateCategoryForm = async (req, res) => {
+    // Check for validation errors
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        // Validation failed - loop through errors
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+
+        // Redirect back to the new organization form
+        return res.redirect('/new-category');
+    }
+
+    const { category_name } = req.body;
+    const categoryId = await createCategory(category_name);
+
+    req.flash('success', 'Category created successfully!');
+
+    res.redirect(`/category/${categoryId}`);
+}
+
 // Export any controller functions
 export { 
     showCategoriesPage, 
     showCategoryDetailsPage,
     showAssignCategoriesForm,
-    processAssignCategoriesForm
+    processAssignCategoriesForm,
+    showCreateCategoryForm,
+    processCreateCategoryForm,
+    categoryValidation
 };
