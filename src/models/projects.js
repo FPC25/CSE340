@@ -125,7 +125,7 @@ const createProject = async (organizationId, title, description, location, date)
         RETURNING project_id
     `;
 
-    const queryParams = [organizationId, title, description, location, date]
+    const queryParams = [organizationId, title, description, location, date];
     const result = await db.query(query, queryParams);
 
     if (result.rows.length === 0) {
