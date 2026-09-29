@@ -71,7 +71,7 @@ async (req, res) => {
         res.redirect('/'); 
     } catch (error) {
         if (error.code === '23505' && error.constraint === 'users_email_key') {
-            req.flash('error', 'This e-mail is already in use. Try using another.');
+            req.flash('error', 'This e-mail is already in use. Try using another. ');
             return res.redirect('/register');
         }
 
