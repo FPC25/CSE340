@@ -101,3 +101,22 @@ INSERT INTO project_category (project_id, category_id) VALUES
 (14, 5), 
 (15, 5), (15, 7);
 
+CREATE TABLE roles (
+	role_id serial primary key,
+	role_name varchar(50) not null,
+	role_description text
+);
+
+INSERT INTO roles(role_name, role_description) VALUES
+('user', 'Standard user with basic access'),
+('admin', 'Administrator with full system access');
+
+CREATE TABLE users (
+	user_id serial primary key,
+	name varchar(100) not null,
+	email varchar(100) unique not null,
+	password_hash varchar(255) not null,
+	role_id int references roles(role_id),
+	created_at timestamp default current_timestamp
+);
+
