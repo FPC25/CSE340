@@ -32,6 +32,12 @@ import {
         categoryValidation
 } from './controllers/categories.js';
 
+import {
+        showUserRegistrationForm,
+        processUserRegistrationForm,
+        userValidation
+} from './controllers/users.js'
+
 import { testErrorPage } from './controllers/errors.js';
 
 const router = express.Router();
@@ -98,6 +104,12 @@ router.get('/edit-category/:id', showUpdateCategoryForm);
 
 // Route to handle the edit organization form submission
 router.post('/edit-category/:id', categoryValidation, processUpdateCategoryForm);
+
+// Route to display the user registration form
+router.get('/register', showUserRegistrationForm);
+
+// Route to handle the user registration form submission
+router.post('/register', userValidation, processUserRegistrationForm);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
