@@ -9,3 +9,17 @@ if (menuButton && menu) {
         menu.classList.toggle('is-open');
     });
 }
+
+document.querySelectorAll('.password-toggle').forEach((button) => {
+    const input = document.getElementById(button.dataset.passwordTarget);
+
+    if (!input) return;
+
+    button.addEventListener('click', () => {
+        const showing = input.type === 'password';
+
+        input.type = showing ? 'text' : 'password';
+        button.textContent = showing ? 'Ocultar' : 'Mostrar';
+        button.setAttribute('aria-pressed', String(showing));
+    });
+});
