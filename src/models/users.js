@@ -3,7 +3,7 @@ import db from './db.js'
 const createUser = async(username, email, passwordHash) => {
     const default_role = 'user'
     const query = `
-        INSERT INTO (name, email, password_hash, role_id)
+        INSERT INTO users (name, email, password_hash, role_id)
         VALUES ($1, $2, $3, (SELECT role_id from roles WHERE role_name = $4))
         RETURNING user_id;
     `
