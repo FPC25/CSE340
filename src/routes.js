@@ -35,6 +35,9 @@ import {
 import {
         showUserRegistrationForm,
         processUserRegistrationForm,
+        showLoginForm,
+        processLoginForm,
+        processLogout,
         userValidation
 } from './controllers/users.js'
 
@@ -110,6 +113,15 @@ router.get('/register', showUserRegistrationForm);
 
 // Route to handle the user registration form submission
 router.post('/register', userValidation, processUserRegistrationForm);
+
+// Route to display the login form
+router.get('/login', showLoginForm);
+
+// Route to handle the login form submission
+router.post('/login', processLoginForm);
+
+// Route to handle the logout request
+router.get('/logout', processLogout);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
