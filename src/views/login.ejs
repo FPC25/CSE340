@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+<main>
+    <h1><%= title %></h1>
+
+    <form action="/login" method="POST">      
+        <div class="form-group">
+            <label for="email">Email (Username)</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-field">
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                >
+                <button
+                    class="password-toggle"
+                    type="button"
+                    data-password-target="password"
+                    aria-controls="password"
+                    aria-pressed="false"
+                >Mostrar</button>
+            </div>
+        </div>        
+
+        <button type="submit">Login</button>
+    </form>
+
+</main>
+<%- include('partials/footer') %>
