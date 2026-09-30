@@ -19,7 +19,7 @@ document.querySelectorAll('.password-toggle').forEach((button) => {
         const showing = input.type === 'password';
 
         input.type = showing ? 'text' : 'password';
-        button.textContent = showing ? 'Ocultar' : 'Mostrar';
+        button.textContent = showing ? 'Hide' : 'Show';
         button.setAttribute('aria-pressed', String(showing));
     });
 });
