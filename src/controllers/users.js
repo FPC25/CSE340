@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 
 import { 
-    createUser 
+    createUser,
+    authenticateUser
 } from '../models/users.js';
 
 import { body, validationResult } from 'express-validator';
@@ -81,8 +82,50 @@ async (req, res) => {
     }    
 };
 
+const showLoginForm = async (req, res) => {
+    const title = "Login"
+    res.render('login', { title });
+}
+
+const processLoginForm = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await authenticateUser(email, password);
+        if (user) {
+            req.session.user = user;
+            req.flash('success', `Login successful! Welcome back ${user.name}`)
+
+            if (res.locals.NODE_ENV === 'development') {
+                console.log('User authenticated successfully:', user);
+            }
+
+            return res.redirect('/')
+        } else {
+            req.flash('error', 'Invalid email or password.');
+            return res.redirect('/login');
+        }
+    } catch(error) {
+        console.error('Error during login:', error);
+        req.flash('error', 'An error occurred during login. Please try again.');
+        res.redirect('/login');
+    }
+}
+
+const processLogout = async (req, res) => {
+    if (req.session.user) {
+        delete req.session.user;
+    }
+    
+    req.flash('success', "Logout successful")
+    return res.redirect('/login')
+}
+
 export {
     showUserRegistrationForm, 
-    processUserRegistrationForm, 
+    processUserRegistrationForm,
+    showLoginForm,
+    processLoginForm,
+    processLogout,
     userValidation
 }
