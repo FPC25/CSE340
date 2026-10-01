@@ -138,7 +138,7 @@ const processLoginForm = async (req, res) => {
 
 const processLogout = async (req, res) => {
     if (req.session.user) {
-        req.session.destroy()
+        delete req.session.user;
     }
     
     req.flash('success', "Logout successful")
