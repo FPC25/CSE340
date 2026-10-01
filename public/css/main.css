@@ -480,7 +480,53 @@ form button[type="submit"]:active {
 }
 
 /* ==========================================================================
-   8. RODAPÉ (FOOTER)
+   8. TABELA (TABLE)
+   ========================================================================== */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0 2rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--white);
+}
+
+.users-table {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.users-table th,
+.users-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: anywhere;
+}
+
+.users-table th {
+    background: var(--navy);
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.users-table td {
+    color: #333333;
+    font-size: 0.95rem;
+}
+
+.users-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.users-table tbody tr:hover {
+    background: var(--accent-soft);
+}
+
+/* ==========================================================================
+   9. RODAPÉ (FOOTER)
    ========================================================================== */
 footer {
     background-color: var(--navy);
@@ -495,7 +541,7 @@ footer p {
 }
 
 /* ==========================================================================
-   9. RESPONSIVIDADE (MOBILE)
+   10. RESPONSIVIDADE (MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
     main {
@@ -521,5 +567,10 @@ footer p {
     
     form {
         padding: 1.5rem;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: 0.75rem;
     }
 }
