@@ -124,7 +124,7 @@ const processLoginForm = async (req, res) => {
                 console.log('User authenticated successfully:', user);
             }
 
-            return res.redirect('/')
+            return res.redirect('/dashboard')
         } else {
             req.flash('error', 'Invalid email or password.');
             return res.redirect('/login');
@@ -138,7 +138,7 @@ const processLoginForm = async (req, res) => {
 
 const processLogout = async (req, res) => {
     if (req.session.user) {
-        delete req.session.user;
+        req.session.destroy()
     }
     
     req.flash('success', "Logout successful")
