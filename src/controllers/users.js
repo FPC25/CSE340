@@ -86,18 +86,14 @@ const requireLogin = (req, res, next) => {
 };
 
 const showDashboard = async (req, res) => {
-    try {
-        const user = req.session.user;
-        const projects = await getProjectsByUserId(user.user_id);
-        res.render('dashboard', { 
-            title: 'Dashboard',
-            name: user.name,
-            email: user.email,
-            projects: projects
-        });
-    } catch (error) {
-        return next(error);
-    }
+    const user = req.session.user;
+    const projects = await getProjectsByUserId(user.user_id);
+    res.render('dashboard', { 
+        title: 'Dashboard',
+        name: user.name,
+        email: user.email,
+        projects: projects
+    });
 };
 
 /**
