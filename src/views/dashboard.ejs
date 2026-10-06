@@ -10,5 +10,54 @@
         <p><a href="/users">View Users</a></p>
     <% } %>
 
+    <h3>Projects</h3>
+    <% if (Array.isArray(projects) && projects.length > 0) { %>
+        <div class="project-view-controls" role="group" aria-label="Project view">
+            <button type="button" data-project-view="cards" aria-pressed="true">Cards</button>
+            <button type="button" data-project-view="list" aria-pressed="false">List</button>
+        </div>
+
+        <section data-project-panel="cards">
+            <ul class="volunteer-projects">
+                <% projects.forEach((project) => { %>
+                    <li>
+                        <h4>
+                            <a href="/project/<%= project.project_id %>"><%= project.title %></a>
+                        </h4>
+                        <p><strong>Date:</strong> <%= formatDate(project.date) %></p>
+                        <p><strong>Location:</strong> <%= project.location %></p>
+                    </li>
+                <% }); %>
+            </ul>
+        </section>
+
+        <section data-project-panel="list" hidden>
+            <div class="table-wrapper">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% projects.forEach((project) => { %>
+                            <tr>
+                                <td>
+                                    <a href="/project/<%= project.project_id %>"><%= project.title %></a>
+                                </td>
+                                <td><%= formatDate(project.date) %></td>
+                                <td><%= project.location %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    <% } else { %>
+        <p>No projects volunteered for yet.</p>
+    <% } %>
+
 </main>
 <%- include('partials/footer') %>
