@@ -10,13 +10,31 @@
         <p><a href="/users">View Users</a></p>
     <% } %>
 
-    <h3>Projects</h3>
-    <% if (Array.isArray(projects) && projects.length > 0) { %>
-        <div class="project-view-controls" role="group" aria-label="Project view">
-            <button type="button" data-project-view="cards" aria-pressed="true">Cards</button>
-            <button type="button" data-project-view="list" aria-pressed="false">List</button>
-        </div>
+    <div class="projects-heading">
+        <h3>Projects</h3>
+        <% if (Array.isArray(projects) && projects.length > 0) { %>
+            <div class="project-view-controls" role="group" aria-label="Project view">
+                <button
+                    type="button"
+                    data-project-view="cards"
+                    aria-label="Cards view"
+                    title="Cards view"
+                    aria-pressed="true">
+                    <img src="/images/grid.svg" alt="" aria-hidden="true">
+                </button>
+                <button
+                    type="button"
+                    data-project-view="list"
+                    aria-label="List view"
+                    title="List view"
+                    aria-pressed="false">
+                    <img src="/images/list-check.svg" alt="" aria-hidden="true">
+                </button>
+            </div>
+        <% } %>
+    </div>
 
+    <% if (Array.isArray(projects) && projects.length > 0) { %>
         <section data-project-panel="cards">
             <ul class="volunteer-projects">
                 <% projects.forEach((project) => { %>

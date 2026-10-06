@@ -559,22 +559,57 @@ main ul.volunteer-projects {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
 }
 
-main ul.volunteer-projects[data-view="list"] {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-}
-
-main ul.volunteer-projects[data-view="list"] > li {
-    flex-direction: row;
+.projects-heading {
+    display: flex;
     align-items: center;
-    padding: 1rem;
-    border-left-width: 3px;
-    box-shadow: none;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-main ul.volunteer-projects[data-view="list"] > li:hover {
-    transform: none;
-    box-shadow: none;
+.projects-heading h3 {
+    margin: 0;
+}
+
+.project-view-controls {
+    display: inline-flex;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0.25rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+}
+
+.project-view-controls button {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.project-view-controls button img {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+}
+
+.project-view-controls button[aria-pressed="true"] {
+    background: var(--accent);
+}
+
+.project-view-controls button[aria-pressed="true"] img {
+    filter: brightness(0) invert(1);
+}
+
+.project-view-controls button:focus-visible {
+    outline: 2px solid var(--heading);
+    outline-offset: 2px;
 }
 
 /* ==========================================================================
@@ -624,9 +659,5 @@ footer p {
     .users-table th,
     .users-table td {
         padding: 0.75rem;
-    }
-
-    main ul.volunteer-projects[data-view="list"] > li {
-        align-items: flex-start;
     }
 }
