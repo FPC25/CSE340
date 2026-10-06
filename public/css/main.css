@@ -480,7 +480,7 @@ form button[type="submit"]:active {
 }
 
 /* ==========================================================================
-   8. TABELA (TABLE)
+   8. DASHBOARD AND TABLES
    ========================================================================== */
 .table-wrapper {
     width: 100%;
@@ -523,6 +523,58 @@ form button[type="submit"]:active {
 
 .users-table tbody tr:hover {
     background: var(--accent-soft);
+}
+
+.project-view-controls {
+    display: inline-flex;
+    gap: 0.25rem;
+    margin: 0.75rem 0 1rem;
+    padding: 0.25rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+}
+
+.project-view-controls button {
+    padding: 0.45rem 0.75rem;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--heading);
+    font: inherit;
+    cursor: pointer;
+}
+
+.project-view-controls button[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.project-view-controls button:focus-visible {
+    outline: 2px solid var(--heading);
+    outline-offset: 2px;
+}
+
+main ul.volunteer-projects {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+}
+
+main ul.volunteer-projects[data-view="list"] {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+
+main ul.volunteer-projects[data-view="list"] > li {
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    border-left-width: 3px;
+    box-shadow: none;
+}
+
+main ul.volunteer-projects[data-view="list"] > li:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 /* ==========================================================================
@@ -572,5 +624,9 @@ footer p {
     .users-table th,
     .users-table td {
         padding: 0.75rem;
+    }
+
+    main ul.volunteer-projects[data-view="list"] > li {
+        align-items: flex-start;
     }
 }
