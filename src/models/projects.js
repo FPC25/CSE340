@@ -162,5 +162,29 @@ const updateProject = async (projectId, organization_id, title, description, loc
     return result.rows[0].project_id;
 }
 
+const getProjectsByUserId = async (userId) => {
+    const query = `
+        SELECT
+                p.project_id,
+                u.user_id,
+                p.title,
+                p.description,
+                p.location,
+                p.date
+            FROM project p
+            JOIN project_volunteer pv ON p.project_id = pv.project_id
+            JOIN users u ON pv.user_id = u.user_id
+            WHERE u.user_id = $1
+            ORDER BY p.date;
+        `;
+    
+    const result = await db.query(query, [userId]);
 
-export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails, getProjectsByCategoryId, createProject, updateProject }; 
+    if (process.env.ENABLE_SQL_LOGGING === 'true') {
+        console.log('Retrieved projects for user with ID', userId);
+    }
+
+    return result.rows;
+}
+
+export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails, getProjectsByCategoryId, createProject, updateProject, getProjectsByUserId }; 
