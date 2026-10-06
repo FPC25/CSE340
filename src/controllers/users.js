@@ -3,7 +3,8 @@ import bcrypt from 'bcrypt';
 import {
     getAllUsers,
     createUser,
-    authenticateUser
+    authenticateUser,
+    getProjectsByUserId
 } from '../models/users.js';
 
 const showUserRegistrationForm = async (req, res) => {
@@ -84,13 +85,19 @@ const requireLogin = (req, res, next) => {
     next();
 };
 
-const showDashboard = (req, res) => {
-    const user = req.session.user;
-    res.render('dashboard', { 
-        title: 'Dashboard',
-        name: user.name,
-        email: user.email
-    });
+const showDashboard = async (req, res) => {
+    try {
+        const user = req.session.user;
+        const projects = await getProjectsByUserId(user.user_id);
+        res.render('dashboard', { 
+            title: 'Dashboard',
+            name: user.name,
+            email: user.email,
+            projects: projects
+        });
+    } catch (error) {
+        return next(error);
+    }
 };
 
 /**
@@ -129,6 +136,8 @@ const showUserPage = async (req, res) => {
         res.redirect('/dashboard');
     }
 }
+
+
 
 export {
     showUserRegistrationForm, 
