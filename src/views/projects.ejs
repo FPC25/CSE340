@@ -1,9 +1,17 @@
 <%- include('partials/header') %>
 <main>
-    <h1><%= title %></h1> 
-    <% if (user && user.role_name === 'admin') { %>
-        <p><a href="/new-project">Add a New Service Project</a></p>
-    <% } %>
+    <div class="page-heading">
+        <h1><%= title %></h1>
+
+        <% if (user && user.role_name === 'admin') { %>
+            <a class="create-action" href="/new-project">
+                <span
+                    class="create-action-icon create-action-icon--project"
+                    aria-hidden="true"></span>
+                <span>New project</span>
+            </a>
+        <% } %>
+    </div>
      
     <h2>Upcoming Service Projects</h2>
     <ul class="project-list">
