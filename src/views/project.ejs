@@ -22,19 +22,27 @@
             editLabel: 'Edit project'
         }) %>
     </div>
-    
+
+    <div class="project-categories-heading">
+        <h3>Categories</h3>
+
+        <% if (user && user.role_name === 'admin') { %>
+            <a
+                class="create-action create-action--secondary"
+                href="/assign-categories/<%= projectDetails.project_id %>">
+                <span
+                    class="create-action-icon create-action-icon--assign-categories"
+                    aria-hidden="true"></span>
+                <span>Assign categories</span>
+            </a>
+        <% } %>
+    </div>
 
     <ul class="category-list">
         <% categoriesForProject.forEach((category) => { %>
             <li><a href="/category/<%= category.category_id %>"><%= category.category_name %></a></li>
         <% }); %>
     </ul>
-
-    <% if (user && user.role_name === 'admin') { %>
-        <p>
-            <a href="/assign-categories/<%= projectDetails.project_id %>">Assign Categories</a>
-        </p>
-    <% } %>
 
     <p><strong>Description:</strong> <%= projectDetails.description %></p>
 
