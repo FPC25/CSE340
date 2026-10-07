@@ -1,15 +1,21 @@
 <%- include('partials/header') %>
 <main>
-    <h1><%= title %></h1>  
-    
+    <div class="page-heading">
+        <h1><%= title %></h1> 
+
+        <% if (user && user.role_name === 'admin') { %>
+            <a class="create-action" href="/new-organization">
+                <span class="create-action-icon create-action-icon--organization" aria-hidden="true"></span>
+                <span>Add organization</span>
+            </a>
+        <% } %>
+    </div>
+
     <p>Here are a few of our partner organizations:</p>
     <ul class="organization-list">
         <% organizations.forEach((organization) => { %>
             <li><img src="/images/<%= organization.logo_filename %>" alt="<%= organization.orgname %> logo"><a class="org-link" href="/organization/<%= organization.organization_id %>"><%= organization.orgname %></a> <%= organization.contact_email %></li>
         <% }); %>
     </ul>
-    <% if (user && user.role_name === 'admin') { %>
-        <p><a href="/new-organization">Add a new organization</a></p>
-    <% } %>
 </main>
 <%- include('partials/footer') %>  
