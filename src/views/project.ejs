@@ -4,6 +4,7 @@
 
     <% if (user) { %>
         <% if (isVolunteering) { %>
+            <p class="volunteer-status" role="status">You are currently volunteering for this project.</p>
             <form action="/project/<%= projectDetails.project_id %>/remove-volunteer" method="POST">
                 <button type="submit">Remove me</button>
             </form>
