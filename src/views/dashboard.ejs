@@ -39,10 +39,25 @@
             <ul class="volunteer-projects">
                 <% projects.forEach((project) => { %>
                     <li>
-                        <h4>
-                            <a href="/project/<%= project.project_id %>"><%= project.title %></a>
-                        </h4>
-                        <p></p>
+                        <div class="volunteer-project-heading">
+                            <h4>
+                                <a href="/project/<%= project.project_id %>"><%= project.title %></a>
+                            </h4>
+                            <form
+                                class="volunteer-removal-form"
+                                action="/project/<%= project.project_id %>/remove-volunteer"
+                                method="POST">
+                                <input type="hidden" name="returnTo" value="dashboard">
+                                <button
+                                    class="volunteer-remove-button"
+                                    type="submit"
+                                    aria-label="Remove me from <%= project.title %>"
+                                    title="Remove me from this project">
+                                    <span class="volunteer-remove-icon" aria-hidden="true"></span>
+                                </button>
+                            </form>
+                        </div>
+
                         <p><strong>Date:</strong> <%= formatDate(project.date) %></p>
                         <p><strong>Location:</strong> <%= project.location %></p>
                     </li>
@@ -58,6 +73,7 @@
                             <th>Project</th>
                             <th>Date</th>
                             <th>Location</th>
+                            <th>Remove me</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,6 +84,21 @@
                                 </td>
                                 <td><%= formatDate(project.date) %></td>
                                 <td><%= project.location %></td>
+                                <td>
+                                    <form
+                                        class="volunteer-removal-form"
+                                        action="/project/<%= project.project_id %>/remove-volunteer"
+                                        method="POST">
+                                        <input type="hidden" name="returnTo" value="dashboard">
+                                        <button
+                                            class="volunteer-remove-button"
+                                            type="submit"
+                                            aria-label="Remove me from <%= project.title %>"
+                                            title="Remove me from this project">
+                                            <span class="volunteer-remove-icon" aria-hidden="true"></span>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         <% }); %>
                     </tbody>
