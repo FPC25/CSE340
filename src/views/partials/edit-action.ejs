@@ -1,0 +1,9 @@
+<% if (user && user.role_name === 'admin') { %>
+    <a
+        class="edit-action"
+        href="<%= editUrl %>"
+        aria-label="<%= editLabel %>"
+        title="<%= editLabel %>">
+        <span class="edit-action-icon" aria-hidden="true"></span>
+    </a>
+<% } %>
