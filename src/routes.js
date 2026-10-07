@@ -17,6 +17,8 @@ import { showProjectsPage,
         processNewProjectForm, 
         showEditProjectForm,
         processEditProjectForm,
+        processVolunteerSignup,
+        processVolunteerRemoval,
         projectValidation
 } from './controllers/projects.js';
 
@@ -131,6 +133,20 @@ router.get('/dashboard', requireLogin, showDashboard);
 
 // Route to display the user page
 router.get('/users', requireRole('admin'), showUserPage);
+
+// Route to handle project volunteer signup
+router.post(
+    '/project/:id/volunteer',
+    requireLogin,
+    processVolunteerSignup
+);
+
+// Route to handle project volunteer removal
+router.post(
+    '/project/:id/remove-volunteer',
+    requireLogin,
+    processVolunteerRemoval
+);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
