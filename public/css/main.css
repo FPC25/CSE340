@@ -331,6 +331,20 @@ main > img:not(.main-logo) {
     margin: 1.5rem 0;
 }
 
+.volunteer-status {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 1rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid #c3e6cb;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    background: var(--accent-soft);
+    color: #155724;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
 /* ==========================================================================
    7. FORMULÁRIOS (FORMS & FORM-GROUP)
    ========================================================================== */
