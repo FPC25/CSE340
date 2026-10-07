@@ -109,9 +109,46 @@ const getProjectsByUserId = async (userId) => {
     return result.rows;
 }
 
+const addProjectToUser = async (userId, projectId) => {
+    const query = `
+        INSERT INTO project_volunteer (user_id, project_id)
+        VALUES ($1, $2)
+        ON CONFLICT (project_id, user_id) DO NOTHING
+        RETURNING *;
+    `;
+    const result = await db.query(query, [userId, projectId]);
+
+    const wasAdded = result.rowCount === 1;
+
+    if (wasAdded && process.env.ENABLE_SQL_LOGGING === 'true') {
+        console.log('Project added to user with ID', userId);
+    }
+
+    return wasAdded;
+};
+
+const removeProjectFromUser = async (userId, projectId) => {
+    const query = `
+        DELETE FROM project_volunteer
+        WHERE user_id = $1 AND project_id = $2
+        RETURNING *;
+    `;
+    const result = await db.query(query, [userId, projectId]);
+
+    const wasRemoved = result.rowCount === 1;
+
+    if (wasRemoved && process.env.ENABLE_SQL_LOGGING === 'true') {
+        console.log('Project removed from user with ID', userId);
+    }
+
+    return wasRemoved;
+};
+
 export {
     getAllUsers,
     createUser, 
     authenticateUser,
+    addProjectToUser,
+    removeProjectFromUser,
     getProjectsByUserId
 };
