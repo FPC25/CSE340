@@ -4,15 +4,18 @@
 
     <div class="organization-heading">
         <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.orgname %> logo">
-        <h2><%= organizationDetails.orgname %></h2>
+        
+        <div class="organization-title-row">
+            <h2><%= organizationDetails.orgname %></h2>
+            <%- include('partials/edit-action', {
+                editUrl: `/edit-organization/${organizationDetails.organization_id}`,
+                editLabel: 'Edit organization'
+            }) %>
+        </div>
     </div>
 
     <p>Description: <%= organizationDetails.description %></p>
     <p>Contact Email: <%= organizationDetails.contact_email %></p>
-
-    <% if (user && user.role_name === 'admin') { %>
-        <p><a href="/edit-organization/<%= organizationDetails.organization_id %>">Edit Organization</a></p>
-    <% } %>
     
     <h3>Projects</h3>
     <ul class="project-list">

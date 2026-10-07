@@ -1,10 +1,12 @@
 <%- include('partials/header', { title: title }) %>
 <main>
-    <h1><%= title %></h1>
-    <% if (user && user.role_name === 'admin') { %>
-        <p><a href="/edit-category/<%= categoryDetails.category_id %>">Edit Category</a></p>
-    <% } %>
-
+    <div class="category-title-row"> 
+        <h1><%= title %></h1>
+        <%- include('partials/edit-action', {
+            editUrl: `/edit-category/${categoryDetails.category_id}`,
+            editLabel: 'Edit category'
+        }) %>
+    </div>
     <h2>Related Projects:</h2>
     <ul class="category-list">
         <% projectsInCategory.forEach((project) => { %>

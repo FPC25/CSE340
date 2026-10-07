@@ -15,7 +15,14 @@
         <% } %>
     <% } %>
 
-    <h2><%= projectDetails.title %></h2>
+    <div class="project-title-row">
+        <h2><%= projectDetails.title %></h2>
+        <%- include('partials/edit-action', {
+            editUrl: `/edit-project/${projectDetails.project_id}`,
+            editLabel: 'Edit project'
+        }) %>
+    </div>
+    
 
     <ul class="category-list">
         <% categoriesForProject.forEach((category) => { %>
@@ -25,7 +32,6 @@
 
     <% if (user && user.role_name === 'admin') { %>
         <p>
-            <a href="/edit-project/<%= projectDetails.project_id %>">Edit Project</a> |
             <a href="/assign-categories/<%= projectDetails.project_id %>">Assign Categories</a>
         </p>
     <% } %>
