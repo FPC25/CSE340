@@ -539,6 +539,10 @@ form button[type="submit"]:active {
     background: var(--accent-soft);
 }
 
+/* ==========================================================================
+   10. Buttons SVG (EDIT, DELETE, ETC)
+   ========================================================================== */
+
 .project-view-controls {
     display: inline-flex;
     gap: 0.25rem;
@@ -686,8 +690,96 @@ main ul.volunteer-projects {
     flex: 0 0 auto;
 }
 
-/* ==========================================================================
-   9. RODAPÉ (FOOTER)
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.edit-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--accent);
+    border-radius: 4px;
+}
+
+.edit-action:hover {
+    color: var(--navy);
+    background: var(--accent-soft);
+    text-decoration: none;
+}
+
+.edit-action:focus-visible {
+    outline: 2px solid var(--heading);
+    outline-offset: 2px;
+}
+
+.edit-action-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    background: currentColor;
+    -webkit-mask: url("/images/pencil-square.svg") center / contain no-repeat;
+    mask: url("/images/pencil-square.svg") center / contain no-repeat;
+}
+
+.project-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 2rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.project-title-row h2 {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow-wrap: anywhere;
+}
+
+.category-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+.category-title-row h1 {
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.category-title-row .edit-action {
+    flex: 0 0 auto;
+}
+
+.organization-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    flex: 1;
+}
+
+.organization-title-row h2 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+/* 
+==========================================================================
+   10. RODAPÉ (FOOTER)
    ========================================================================== */
 footer {
     background-color: var(--navy);
@@ -702,7 +794,7 @@ footer p {
 }
 
 /* ==========================================================================
-   10. RESPONSIVIDADE (MOBILE)
+   11. RESPONSIVIDADE (MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
     main {
