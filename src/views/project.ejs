@@ -2,22 +2,41 @@
 <main>
     <h1>Project Details</h1>
 
+    <% if (user) { %>
+        <% if (isVolunteering) { %>
+            <form action="/project/<%= projectDetails.project_id %>/remove-volunteer" method="POST">
+                <button type="submit">Remove me</button>
+            </form>
+        <% } else { %>
+            <form action="/project/<%= projectDetails.project_id %>/volunteer" method="POST">
+                <button type="submit">Volunteer</button>
+            </form>
+        <% } %>
+    <% } %>
+
     <h2><%= projectDetails.title %></h2>
+
     <ul class="category-list">
         <% categoriesForProject.forEach((category) => { %>
             <li><a href="/category/<%= category.category_id %>"><%= category.category_name %></a></li>
         <% }); %>
     </ul>
-    <p><strong>Description:</strong> <%= projectDetails.description %></p>
-    <p><strong>Start Date:</strong> <%= formatDate(projectDetails.date) %></p>
-    <p><strong>Location:</strong> <%= projectDetails.location %></p>
 
-    <p><strong>Organization:</strong> <a class="org-link" href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.orgname %></a></p>
     <% if (user && user.role_name === 'admin') { %>
         <p>
             <a href="/edit-project/<%= projectDetails.project_id %>">Edit Project</a> |
             <a href="/assign-categories/<%= projectDetails.project_id %>">Assign Categories</a>
         </p>
     <% } %>
+
+    <p><strong>Description:</strong> <%= projectDetails.description %></p>
+
+    <p><strong>Start Date:</strong> <%= formatDate(projectDetails.date) %></p>
+
+    <p><strong>Location:</strong> <%= projectDetails.location %></p>
+    
+    <p><strong>Organization:</strong> <a class="org-link" href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.orgname %></a></p>
+    
+    
 </main>
 <%- include('partials/footer') %> 
